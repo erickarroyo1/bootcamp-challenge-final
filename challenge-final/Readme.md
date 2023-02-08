@@ -9,7 +9,12 @@ https://github.com/roxsross/devops-practice-tools/tree/master/final-bootcampdevo
 3. Separar por ramas (develop, Testing, Master) 
 4. utiizar el pipeline multibranch para setear por cada ambiente una rama.
 5. Cada tfvars lo nombramos con la rama y concatenamos una variable local que permita concatenar el nombre.
-6. 
+6. Fases
+   1. hacer funcionar la app en docker
+   2. hacerlo funcionar con kubernetes
+   3. depslegar la infra con pipeline
+   4. desplegar la infra con los dockers 
+   5. En Kubernetes en killercoda desplegar los kubernetes 
 
 
 ### MEJORAS
