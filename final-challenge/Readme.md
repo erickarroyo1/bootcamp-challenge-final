@@ -9,21 +9,24 @@ https://github.com/roxsross/devops-practice-tools/tree/master/final-bootcampdevo
 3. Separar por ramas (develop, Testing, Master) 
 4. utiizar el pipeline multibranch para setear por cada ambiente una rama.
 5. Cada tfvars lo nombramos con la rama y concatenamos una variable local que permita concatenar el nombre.
-6. Fases
-   1. hacer funcionar la app en docker localmente con SIN docker-compose
-      # 1. Build docker apuntando al folder 
+# 6. Fases:
+
+   1. ##### Hacer funcionar la app en docker localmente con SIN docker-compose
+      
+      - Build docker apuntando al folder 
+  
       ``` 
          docker build -t ms-frontend:1.0 frontend
          docker build -t ms-products:1.0 products
          docker build -t ms-shopping-cart:1.0 shopping-cart
       ```
-      # 2. Se ajustan los docker file de daca app para añadir otros componentes en la instalación que permitan ejecutar el tshoot. FInalmente, en las variables de ambiente para la ejecución se colocan las variables apuntando al localhost: 
+      - Se ajustan los docker file de daca app para añadir otros componentes en la instalación que permitan ejecutar el tshoot. FInalmente, en las variables de ambiente para la ejecución se colocan las variables apuntando al localhost: 
 
       ```
          RUN apt update && apt install curl net-tools inetutils-ping -y
 
       ```
-      # 3. Iniciar los contenedores
+      - Iniciar los contenedores
 
       ```
       docker run -d -p 3000:3000 \
@@ -34,10 +37,11 @@ https://github.com/roxsross/devops-practice-tools/tree/master/final-bootcampdevo
       docker run -d -p 3001:3001 ms-products:1.0
       docker run -d -p 3002:3002 ms-shopping-cart:1.0
       ```
-   2. Hacer funcionar la app en docker localmente con CON docker-compose
-      # 1. Ajustar el docker-compose para hacer funcionar la apicación.
+   2. ##### Hacer funcionar la app en docker localmente con CON docker-compose
+      
+      - Ajustar el docker-compose para hacer funcionar la apicación.
          
-         # 1.a. Debemos crear una red interna que permita asociar los nombres localmente a un hostname local. Para ello se coloca esta porción de código con una nueva red.
+        - 1.a. Debemos crear una red interna que permita asociar los nombres localmente a un hostname local. Para ello se coloca esta porción de código con una nueva red.
       ```
          networks:
             bootcampfinal:
@@ -47,57 +51,64 @@ https://github.com/roxsross/devops-practice-tools/tree/master/final-bootcampdevo
                   - subnet: 172.25.0.0/16
                      gateway: 172.25.0.1
       ```
-         # 2.a. Luego en cada contenedor se coloca la ip que va a utilizar cada Contenedor y al caller (frontend) Se le coloca un "extra_host" para definir dentro /etc/hosts los nombres de dominio locales para dicho contenedor
+        - Luego en cada contenedor se coloca la ip que va a utilizar cada Contenedor y al caller (frontend) Se le coloca un "extra_host" para definir dentro /etc/hosts los nombres de dominio locales para dicho contenedor
 
       ```
-            version: '3'
-      services:
-         frontend:
-            container_name: frontend
-            ports:
-               - "3000:3000"
-            image: ms-frontend:1.0
-            #añade entradas al archivo /etc/hosts
-            extra_hosts:
-               - "products:172.25.0.10"
-               - "shopping-cart:172.25.0.20"
-            # Importante dejar las variables como valores y no como string de datos, es decir entre comillas, sino entrega error 'getaddrinfo ENOTFOUND "172.25.0.10"'
-            environment:
-               - PRODUCTS_SERVICE=products
-               - SHOPPING_CART_SERVICE=shopping-cart
-            networks:
-               bootcampfinal:
-               ipv4_address: 172.25.0.5
+               version: '3'
+         services:
+            frontend:
+               container_name: frontend
+               ports:
+                  - "3000:3000"
+               image: ms-frontend:1.0
+               #añade entradas al archivo /etc/hosts
+               extra_hosts:
+                  - "products:172.25.0.10"
+                  - "shopping-cart:172.25.0.20"
+               # Importante dejar las variables como valores y no como string de datos, es decir entre comillas, sino entrega error 'getaddrinfo ENOTFOUND "172.25.0.10"'
+               environment:
+                  - PRODUCTS_SERVICE=products
+                  - SHOPPING_CART_SERVICE=shopping-cart
+               networks:
+                  bootcampfinal:
+                  ipv4_address: 172.25.0.5
 
-         shopping-cart:
-            container_name: shopping-cart
-            ports:
-            - "3001:3001"
-            image: ms-shopping-cart:1.0
-            networks:
-               bootcampfinal:
-               ipv4_address: 172.25.0.20
+            shopping-cart:
+               container_name: shopping-cart
+               ports:
+               - "3001:3001"
+               image: ms-shopping-cart:1.0
+               networks:
+                  bootcampfinal:
+                  ipv4_address: 172.25.0.20
 
-         products:
-            container_name: products
-            ports:
-            - "3002:3002"
-            image: ms-products:1.0
-            networks:
-               bootcampfinal:
-               ipv4_address: 172.25.0.10
+            products:
+               container_name: products
+               ports:
+               - "3002:3002"
+               image: ms-products:1.0
+               networks:
+                  bootcampfinal:
+                  ipv4_address: 172.25.0.10
 
          ```
 
-      # Correr los contenedores localmente
+        - Correr los contenedores localmente
+
          ```
          docker-compose up -d
+
          ```
 
-   2. hacerlo funcionar con kubernetes utilizando minikube
-   3. depslegar la infra con pipeline
-   4. desplegar la infra con los dockers con userdata
-   5. En Kubernetes en killercoda desplegar los kubernetes. Puede que roxx nos disponibilice un EKS o podemos desplegarlo nosotros en la cuenta tlz 
+        - Evidencias:
+
+            ![](docs/1.png)
+
+
+   3. ##### hacerlo funcionar con kubernetes utilizando minikube
+   4. ##### depslegar la infra con pipeline
+   5. ##### desplegar la infra con los dockers con userdata usando terraform
+   6. ##### En Kubernetes en killercoda desplegar los kubernetes. Puede que roxx nos disponibilice un EKS o podemos desplegarlo nosotros en la cuenta tlz 
 
 
 ### MEJORAS
