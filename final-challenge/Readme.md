@@ -102,6 +102,7 @@ https://github.com/roxsross/devops-practice-tools/tree/master/final-bootcampdevo
 
         - Evidencias (Docker local/Docker Compose):
 
+
             ![](../docs/docker-local.png)
 
 
