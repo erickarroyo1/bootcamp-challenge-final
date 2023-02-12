@@ -100,7 +100,7 @@ https://github.com/roxsross/devops-practice-tools/tree/master/final-bootcampdevo
 
          ```
 
-        - Evidencias:
+        - Evidencias (Docker local/Docker Compose):
 
             ![](docs/1.png)
 
