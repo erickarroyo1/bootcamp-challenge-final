@@ -30,9 +30,9 @@ Aplicacion realizada en express y se expone en el puerto 3002
 
 #### Iniciar los contenedores 
     docker run -d -p 3000:3000 \
-    -e PRODUCTS_SERVICE=host.docker.internal \
-    -e SHOPPING_CART_SERVICE=host.docker.internal \
-    ms-frontend:1.0
+    -e PRODUCTS_SERVICE=172.17.0.2 \
+    -e SHOPPING_CART_SERVICE=172.17.0.3 \
+    ms-frontend:1.0 
 
     docker run -d -p 3001:3001 ms-products:1.0
     docker run -d -p 3002:3002 ms-shopping-cart:1.0
