@@ -1,8 +1,8 @@
-# Repo:
+## Repo:
 
 https://github.com/roxsross/devops-practice-tools/tree/master/final-bootcampdevops-ninja
 
-# Comentarios:
+## Comentarios:
 
 1. Depslegar 3 servers en la misma VPC 
 2. Utilizar userdata para subir el docker y el dockerhub en cada server
