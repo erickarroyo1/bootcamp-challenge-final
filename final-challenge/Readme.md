@@ -102,7 +102,7 @@ https://github.com/roxsross/devops-practice-tools/tree/master/final-bootcampdevo
 
         - Evidencias (Docker local/Docker Compose):
 
-            ![](docs/1.png)
+            ![](docs/docker-local.png)
 
 
    3. ##### Fase 3 - Hacerlo funcionar con kubernetes utilizando minikube
