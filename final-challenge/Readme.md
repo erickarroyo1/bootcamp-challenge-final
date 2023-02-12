@@ -9,9 +9,9 @@ https://github.com/roxsross/devops-practice-tools/tree/master/final-bootcampdevo
 3. Separar por ramas (develop, Testing, Master) 
 4. utiizar el pipeline multibranch para setear por cada ambiente una rama.
 5. Cada tfvars lo nombramos con la rama y concatenamos una variable local que permita concatenar el nombre.
-## 6. Ejecución por Fases:
+## Ejecución por Fases:
 
-   1. ##### Hacer funcionar la app en docker localmente con SIN docker-compose
+   1. ##### Fase 1 - Hacer funcionar la app en docker localmente con SIN docker-compose
       
       - Build docker apuntando al folder 
   
@@ -37,7 +37,7 @@ https://github.com/roxsross/devops-practice-tools/tree/master/final-bootcampdevo
       docker run -d -p 3001:3001 ms-products:1.0
       docker run -d -p 3002:3002 ms-shopping-cart:1.0
       ```
-   2. ##### Hacer funcionar la app en docker localmente con CON docker-compose
+   2. ##### Fase 2 - Hacer funcionar la app en docker localmente con CON docker-compose
       
       - Ajustar el docker-compose para hacer funcionar la apicación.
          
@@ -105,10 +105,10 @@ https://github.com/roxsross/devops-practice-tools/tree/master/final-bootcampdevo
             ![](docs/1.png)
 
 
-   3. ##### hacerlo funcionar con kubernetes utilizando minikube
-   4. ##### depslegar la infra con pipeline
-   5. ##### desplegar la infra con los dockers con userdata usando terraform
-   6. ##### En Kubernetes en killercoda desplegar los kubernetes. Puede que roxx nos disponibilice un EKS o podemos desplegarlo nosotros en la cuenta tlz 
+   3. ##### Fase 3 - Hacerlo funcionar con kubernetes utilizando minikube
+   4. ##### Fase 4 - Depslegar la infra con pipeline
+   5. ##### Fase 5 - Desplegar la infra con los dockers con userdata usando terraform
+   6. ##### Fase 6 -  En Kubernetes en killercoda desplegar los kubernetes. Puede que roxx nos disponibilice un EKS o podemos desplegarlo nosotros en la cuenta tlz 
 
 
 ### MEJORAS
