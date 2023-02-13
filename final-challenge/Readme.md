@@ -107,7 +107,7 @@ https://github.com/roxsross/devops-practice-tools/tree/master/final-bootcampdevo
 
    3. ##### Fase 3 - Hacerlo funcionar con kubernetes utilizando minikube
    4. ##### Fase 4 - Depslegar la infra con pipeline
-   5. ##### Fase 5 - Desplegar la infra con los dockers con userdata usando terraform
+   5. ##### Fase 5 - Desplegar la infra con los dockers y userdata usando terraform
    6. ##### Fase 6 -  En Kubernetes en killercoda desplegar los kubernetes. Puede que roxx nos disponibilice un EKS o podemos desplegarlo nosotros en la cuenta tlz 
 
 
