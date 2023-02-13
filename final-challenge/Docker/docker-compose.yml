@@ -8,7 +8,7 @@ services:
     container_name: frontend
     ports:
       - "3000:3000"
-    image: ms-frontend:1.0
+    image: 191006/ms-frontend:1.0
     #añade entradas al archivo /etc/hosts
     extra_hosts:
       - "products:172.25.0.10"
@@ -25,7 +25,7 @@ services:
     container_name: shopping-cart
     ports:
      - "3001:3001"
-    image: ms-shopping-cart:1.0
+    image: 191006/ms-shopping-cart:1.0
     networks:
       bootcampfinal:
         ipv4_address: 172.25.0.20
@@ -34,7 +34,7 @@ services:
     container_name: products
     ports:
      - "3002:3002"
-    image: ms-products:1.0
+    image: 191006/ms-products:1.0
     networks:
       bootcampfinal:
         ipv4_address: 172.25.0.10

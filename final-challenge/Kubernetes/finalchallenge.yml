@@ -1,0 +1,26 @@
+--- #Deployment CONSUMER
+
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: consumer-k8s
+  namespace: development
+  labels:
+    consumer: consumer-k8s
+spec:
+  revisionHistoryLimit: 5 #default 10
+  strategy:
+    type: RollingUpdate #default Recreate
+  replicas: 2
+  selector:
+    matchLabels:
+      consumer: consumer-k8s
+  template:
+    metadata:
+      labels:
+        consumer: consumer-k8s
+    spec:
+      containers:
+      - name: consumer
+        image: 191006/app-consumer-k8s-consumer:erick-0.1.2
+

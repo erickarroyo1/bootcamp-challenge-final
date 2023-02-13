@@ -20,6 +20,27 @@ https://github.com/roxsross/devops-practice-tools/tree/master/final-bootcampdevo
          docker build -t ms-products:1.0 products
          docker build -t ms-shopping-cart:1.0 shopping-cart
       ```
+      - Push image into dockerHub 
+
+         Se creó un script que ejecutara el push de cada imagen, el contenido es el siguiente:
+  
+      ``` 
+         #!/bin/bash
+
+         echo -e '\n\nPush de la imágen a dockerhub\n\n'
+
+         docker login
+         docker tag ms-frontend:1.0 191006/ms-frontend:1.0
+         docker tag ms-products:1.0 191006/ms-products:1.0
+         docker tag ms-shopping-cart:1.0 191006/ms-shopping-cart:1.0
+         docker push 191006/ms-frontend:1.0
+         docker push 191006/ms-products:1.0
+         docker push 191006/ms-shopping-cart:1.0
+
+         echo -e '\n\n FIN EJECUCIÓN PUSH DOCKERHUB\n\n'
+
+      ```
+   
       - Se ajustan los docker file de daca app para añadir otros componentes en la instalación que permitan ejecutar el tshoot. FInalmente, en las variables de ambiente para la ejecución se colocan las variables apuntando al localhost: 
 
       ```
