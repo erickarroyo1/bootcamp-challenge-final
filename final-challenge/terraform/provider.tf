@@ -1,3 +1,6 @@
+# credentials from ~/.aws/  
 provider "aws" {
-  region = "us-east-1"
+  alias   = "bootcamp-prd"
+  region  = var.region
+  profile = var.profile
 }

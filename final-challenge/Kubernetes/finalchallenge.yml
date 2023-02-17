@@ -1,12 +1,22 @@
---- #Deployment CONSUMER
+--- # Namespace creation
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: bootcamp
+  labels:
+    name: bootcamp
+
+
+--- #Deployment frontend
 
 apiVersion: apps/v1 
 kind: Deployment
 metadata:
-  name: consumer-k8s
-  namespace: development
+  name: frontend-deployment
+  namespace: bootcamp
   labels:
-    consumer: consumer-k8s
+    consumer: frontend
 spec:
   revisionHistoryLimit: 5 #default 10
   strategy:
@@ -14,13 +24,121 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      consumer: consumer-k8s
+      consumer: frontend
   template:
     metadata:
       labels:
-        consumer: consumer-k8s
+        consumer: frontend
     spec:
       containers:
-      - name: consumer
-        image: 191006/app-consumer-k8s-consumer:erick-0.1.2
+      - name: frontend
+        image: 191006/ms-frontend:1.0
 
+
+--- #Deployment products
+
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: products-deployment
+  namespace: bootcamp
+  labels:
+    consumer: products
+spec:
+  revisionHistoryLimit: 5 #default 10
+  strategy:
+    type: RollingUpdate #default Recreate
+  replicas: 2
+  selector:
+    matchLabels:
+      consumer: products
+  template:
+    metadata:
+      labels:
+        consumer: products
+    spec:
+      containers:
+      - name: products
+        image: 191006/ms-products:1.0
+
+
+--- #Deployment shopping-cart
+
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: shopping-cart-deployment
+  namespace: bootcamp
+  labels:
+    consumer: shopping-cart
+spec:
+  revisionHistoryLimit: 5 #default 10
+  strategy:
+    type: RollingUpdate #default Recreate
+  replicas: 2
+  selector:
+    matchLabels:
+      consumer: shopping-cart
+  template:
+    metadata:
+      labels:
+        consumer: shopping-cart
+    spec:
+      containers:
+      - name: shopping-cart
+        image: 191006/ms-shopping-cart:1.0
+
+
+--- #service for frontend 
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: bootcamp
+spec:
+  type: NodePort
+  #type: ClusterIP
+  selector:
+    app: frontend-deployment
+  ports:
+    - protocol: TCP
+      nodePort: 30010 # Valid range for nodeport is 30000-32767
+      port: 3000
+      targetPort: 3000
+
+
+--- #service for products 
+apiVersion: v1
+kind: Service
+metadata:
+  name: products-service
+  namespace: bootcamp
+spec:
+  type: NodePort
+  #type: ClusterIP
+  selector:
+    app: products-deployment
+  ports:
+    - protocol: TCP
+      nodePort: 30011 # Valid range for nodeport is 30000-32767
+      port: 3001
+      targetPort: 3001
+
+--- #service for shopping-cart 
+apiVersion: v1
+kind: Service
+metadata:
+  name: shopping-cart-service
+  namespace: bootcamp
+spec:
+  type: NodePort
+  #type: ClusterIP
+  selector:
+    app: shopping-cart-deployment
+  ports:
+    - protocol: TCP
+      nodePort: 30012 # Valid range for nodeport is 30000-32767
+      port: 3002
+      targetPort: 3002
+
+  

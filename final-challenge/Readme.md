@@ -127,7 +127,18 @@ https://github.com/roxsross/devops-practice-tools/tree/master/final-bootcampdevo
 
 
    3. ##### Fase 3 - Hacerlo funcionar con kubernetes utilizando minikube
+      1. Creamos el template de kubernetes 
+
+         ```
+         docker-compose up -d
+
+         ```
+
    4. ##### Fase 4 - Depslegar la infra con pipeline
+         - Aprovisionar 3 servidores AWS EC2 con Terraform (server-dev, server-tst, server-prd)
+         - Crear los ficheros de terraform + userdata (docker+docker-compose)
+         - Crear Repositorio Github para la infra
+         - Diagrama Arquitectura Infra 
    5. ##### Fase 5 - Desplegar la infra con los dockers y userdata usando terraform
    6. ##### Fase 6 -  En Kubernetes en killercoda desplegar los kubernetes. Puede que roxx nos disponibilice un EKS o podemos desplegarlo nosotros en la cuenta tlz 
 

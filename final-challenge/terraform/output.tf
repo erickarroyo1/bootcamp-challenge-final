@@ -1,8 +1,33 @@
-output "dns_publica_server" {
-    description = "DNS publica del servidor 1"
-    value = "http://${aws_instance.server.public_dns}"
-}
-output "ip_publica_server" {
-  description = "Ip Publica bastion"
-  value = "ssh -i temporal.pem ec2-user@${aws_instance.server.public_ip}"
-}
+
+# output "FGTPublicIP" {
+#   value = aws_eip.FGTPublicIP.public_ip
+# }
+
+# output "FGT2PublicIP" {
+#   value = aws_eip.FGT2PublicIP.public_ip
+# }
+
+# output "Username" {
+#   value = "admin"
+# }
+
+# output "FGT1-Password" {
+#   value = aws_instance.fgt-1.id
+# }
+
+# output "FGT2-Password" {
+#   value = aws_instance.fgt-2.id
+# }
+
+# output "SecurityVPC" {
+#   value = aws_vpc.security-vpc.id
+# }
+
+# output "public-subnet-id-1" {
+#   value = aws_subnet.security-vpc-subnet-public1-az1.id
+# }
+
+# output "public-subnet-id-2" {
+#   value = aws_subnet.security-vpc-subnet-public2-az2.id
+# }
+
