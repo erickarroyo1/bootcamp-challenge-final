@@ -9,8 +9,11 @@ __pycache__/
 # securuty ssh keys
 *.ppk
 *.pem
+.pub
 ssh-security-keys
 ssh-security-keys.pub
+bootcamp-final
+bootcamp-final.pub
 
 # IntelliJ
 .idea/
