@@ -7,3 +7,7 @@ cidr_private_subnet = ["172.20.10.0/24", "172.20.11.0/24"]
 cidr_main_vpc       = "172.20.0.0/16"
 profile             = "Test-LandindZone"
 region              = "us-east-1"
+key_pair_pub        = "./keypair/bootcamp-final.pub"
+keyname             = "bootcamp-final-keypair"
+root_block_device_type = "gp3"
+root_block_device_size = "20"

@@ -1,6 +1,7 @@
 #vpc default
 
 data "aws_vpc" "default" {
-    default = true
+  default  = true
+  provider = aws.bootcamp-prd
 }
 

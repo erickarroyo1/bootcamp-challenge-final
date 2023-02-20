@@ -4,16 +4,32 @@
 
 data "aws_availability_zones" "available" {}
 
+
+#--------------------------------------------------
+# Terrafoem requiered providers VPC 
+# -- Avoid Warnings for terraform modules --
+#--------------------------------------------------
+
+terraform {
+    required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.5"
+    }
+  }
+}
+
 #--------------------------------------------------
 # main VPC
 #--------------------------------------------------
+
 
 resource "aws_vpc" "vpc_main" {
   cidr_block           = var.cidr_vpc_main
   enable_dns_hostnames = true
   enable_dns_support   = true
 
-  tags = merge(var.tags, var.vpc_tags, tomap({"Name" = "vpc_main${var.sufix_name}"}))
+  tags = merge(var.tags, var.vpc_tags, tomap({"Name" = "vpc_main_${var.sufix_name}-${terraform.workspace}"}))
 }
 
 # Subnets
@@ -81,4 +97,5 @@ resource "aws_route" "route_default_gateway_main_public" {
   destination_cidr_block = "0.0.0.0/0"
   gateway_id             = aws_internet_gateway.igw_main[0].id
 }
+
 
