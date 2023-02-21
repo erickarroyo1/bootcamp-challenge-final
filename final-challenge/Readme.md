@@ -4,11 +4,11 @@ https://github.com/roxsross/devops-practice-tools/tree/master/final-bootcampdevo
 
 ## Comentarios:
 
-1. Depslegar 3 servers en la misma VPC 
+1. Desplegar 3 servers en la misma VPC o VPC diferentes
 2. Utilizar userdata para subir el docker y el dockerhub en cada server
 3. Separar por ramas (develop, Testing, Master) 
 4. utiizar el pipeline multibranch para setear por cada ambiente una rama.
-5. Cada tfvars lo nombramos con la rama y concatenamos una variable local que permita concatenar el nombre.
+5. Cada tfvars lo nombramos con la rama y concatenamos una variable local que permita concatenar el nombre. terraform.wordkspaces
 ## Ejecución por Fases:
 
    1. ##### Fase 1 - Hacer funcionar la app en docker localmente con SIN docker-compose
@@ -121,6 +121,13 @@ https://github.com/roxsross/devops-practice-tools/tree/master/final-bootcampdevo
 
          ```
 
+        - dar de baja los contenedores localmente
+
+         ```
+         docker-compose down
+
+         ```
+
         - Evidencias (Docker local/Docker Compose):
 
             ![](../docs/docker-local.png)
@@ -130,7 +137,7 @@ https://github.com/roxsross/devops-practice-tools/tree/master/final-bootcampdevo
       1. Creamos el template de kubernetes 
 
          ```
-         docker-compose up -d
+         kubectl apply -f file.yml
 
          ```
 
