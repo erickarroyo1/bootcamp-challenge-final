@@ -19,3 +19,4 @@ variable "bootstrap-bootcamp-server" {
 }
 variable "root_block_device_type" {}
 variable "root_block_device_size" {}
+variable "sufix" {}
