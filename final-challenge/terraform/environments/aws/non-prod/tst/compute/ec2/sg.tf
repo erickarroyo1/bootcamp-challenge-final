@@ -1,8 +1,9 @@
 # Definir grupo de seguridad puerto 80 servidores
 resource "aws_security_group" "grupo_seguridad" {
   name     = "${var.app}-${var.env}-sg"
-  vpc_id   = data.aws_vpc.default.id
-  provider = aws.bootcamp-prd
+  #get vpc id from data.tf 
+  vpc_id   = data.terraform_remote_state.vpc-tst.outputs.vpc_id
+  provider = aws.bootcamp-tst
   ingress {
     cidr_blocks = ["0.0.0.0/0"]
     description = "Acceso al puerto 80"
