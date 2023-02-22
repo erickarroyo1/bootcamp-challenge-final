@@ -6,7 +6,7 @@ data "terraform_remote_state" "vpc-tst" {
   config = {
     bucket = "tf-remote-state-tlz-bootcamp"
     #se coloca el env de acuerdo al nombramiento de devops en shared services, no se utiliza la variable env de workspace porque estan nombrados diferentes
-    key     = "env:/${terraform.workspace}/bootcamp/final-challenge/terraform.tfstate"
+    key     = "env:/${terraform.workspace}/bootcamp/final-challenge/compute/ec2/terraform.tfstate"
     region  = "us-east-1"
     profile = "Test-LandindZone"
   }

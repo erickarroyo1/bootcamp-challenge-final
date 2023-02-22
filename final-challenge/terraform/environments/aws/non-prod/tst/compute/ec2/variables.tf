@@ -1,6 +1,5 @@
 variable "region" {}
 variable "profile" {}
-variable "public_subnets_ids" {}
 variable "ami_id" {}
 variable "instance_count" {}
 variable "keyname" {}
@@ -12,3 +11,5 @@ variable "root_block_device_size" {}
 variable "sufix" {}
 variable "app" {}
 variable "env" {}
+
+

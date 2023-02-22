@@ -1,33 +1,24 @@
+output "vpc_id" {
+  value = module.bootcamp-tst-vpc.vpc_id
+}
 
-# output "FGTPublicIP" {
-#   value = aws_eip.FGTPublicIP.public_ip
-# }
 
-# output "FGT2PublicIP" {
-#   value = aws_eip.FGT2PublicIP.public_ip
-# }
+output "vpc_subnet_private_ids" {
+  value = module.bootcamp-tst-vpc.vpc_subnet_private_ids
+}
 
-# output "Username" {
-#   value = "admin"
-# }
+output "vpc_subnet_public_ids" {
+  value = module.bootcamp-tst-vpc.vpc_subnet_public_ids
+}
 
-# output "FGT1-Password" {
-#   value = aws_instance.fgt-1.id
-# }
+output "igw_id" {
+  value = module.bootcamp-tst-vpc.igw_id
+}
 
-# output "FGT2-Password" {
-#   value = aws_instance.fgt-2.id
-# }
+output "rtb_default_public_ids" {
+  value = module.bootcamp-tst-vpc.rtb_default_public_ids
+}
 
-# output "SecurityVPC" {
-#   value = aws_vpc.security-vpc.id
-# }
-
-# output "public-subnet-id-1" {
-#   value = aws_subnet.security-vpc-subnet-public1-az1.id
-# }
-
-# output "public-subnet-id-2" {
-#   value = aws_subnet.security-vpc-subnet-public2-az2.id
-# }
-
+output "rtb_default_private_ids" {
+  value = module.bootcamp-tst-vpc.rtb_default_private_ids
+}
