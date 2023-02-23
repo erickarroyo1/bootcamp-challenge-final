@@ -1,6 +1,6 @@
 
 module "ec2" {
-  source                 = "../../../../../../modules/compute/ec2/instance"
+  source                 = "../../../../../modules/compute/ec2/instance"
   instance_type          = var.instance_type
   count                  = var.instance_count
   user_data              = var.user_data
