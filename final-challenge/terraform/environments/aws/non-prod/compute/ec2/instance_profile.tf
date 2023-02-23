@@ -1,3 +1,5 @@
+## referencia https://medium.com/@khimananda.oli/terraform-aws-ec2-and-system-manager-e0f0c914132c
+
 resource "aws_iam_instance_profile" "iam-profile" {
   name = "ec2_profile"
   role = aws_iam_role.iam-role.name
