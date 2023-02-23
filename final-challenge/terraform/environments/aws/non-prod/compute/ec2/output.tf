@@ -13,3 +13,9 @@ output "private_ip" {
 output "instance_arn" {
   value = module.ec2[0].instance_arn
 }
+output "public_dns" {
+  value = module.ec2[0].public_dns
+}
+output "public_dns_with_port" {
+  value = "http://${local.string_public_dns}:3000"
+}
