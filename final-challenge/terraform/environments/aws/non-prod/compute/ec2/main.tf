@@ -4,6 +4,7 @@ module "ec2" {
   instance_type          = var.instance_type
   count                  = var.instance_count
   user_data              = var.user_data
+  instance_profile_name  = aws_iam_instance_profile.iam-profile.name
   root_block_device_size = var.root_block_device_size
   public_subnets_ids     = [data.terraform_remote_state.vpc-tst.outputs.vpc_subnet_public_ids[0]]
   keyname                = var.keyname
