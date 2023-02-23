@@ -1,33 +1,15 @@
-
-# output "FGTPublicIP" {
-#   value = aws_eip.FGTPublicIP.public_ip
-# }
-
-# output "FGT2PublicIP" {
-#   value = aws_eip.FGT2PublicIP.public_ip
-# }
-
-# output "Username" {
-#   value = "admin"
-# }
-
-# output "FGT1-Password" {
-#   value = aws_instance.fgt-1.id
-# }
-
-# output "FGT2-Password" {
-#   value = aws_instance.fgt-2.id
-# }
-
-# output "SecurityVPC" {
-#   value = aws_vpc.security-vpc.id
-# }
-
-# output "public-subnet-id-1" {
-#   value = aws_subnet.security-vpc-subnet-public1-az1.id
-# }
-
-# output "public-subnet-id-2" {
-#   value = aws_subnet.security-vpc-subnet-public2-az2.id
-# }
-
+output "publicIp" {
+  value = module.ec2[0].publicIp
+}
+output "instance_id" {
+  value = module.ec2[0].instance_id
+}
+output "private_dns" {
+  value = module.ec2[0].private_dns
+}
+output "private_ip" {
+  value = module.ec2[0].private_ip
+}
+output "instance_arn" {
+  value = module.ec2[0].instance_arn
+}
