@@ -19,3 +19,5 @@ output "public_dns" {
 output "public_dns_with_port" {
   value = "http://${local.string_public_dns}:3000"
 }
+
+
