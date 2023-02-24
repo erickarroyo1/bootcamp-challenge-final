@@ -1,6 +1,8 @@
 # Cada servicio declarado corresponde a un contenedor
 # docker run -d -p 5000:5000 --name 09-pokeapi pokeapi:0.0.1 
 
+#el nombre del contenedor es el mismo host, mejor practica apuntarlo con el nommbre y la etiqueta "container_name"
+
 #Revisar esta documentación https://levelup.gitconnected.com/how-to-access-a-docker-container-from-another-container-656398c93576
 version: '3'
 services:
@@ -20,16 +22,17 @@ services:
     networks:
       bootcampfinal:
         ipv4_address: 172.25.0.5
+    restart: always
 
   shopping-cart:
-    container_name: shopping-cart
+    container_name: shopping-cart  #
     ports:
      - "3001:3001"
     image: 191006/ms-shopping-cart:1.0
     networks:
       bootcampfinal:
         ipv4_address: 172.25.0.20
-
+    restart: always
   products:
     container_name: products
     ports:
@@ -38,7 +41,7 @@ services:
     networks:
       bootcampfinal:
         ipv4_address: 172.25.0.10
-
+    restart: always # sirve para iniciar automáticamente al reiniciar.
 networks:
   bootcampfinal:
     driver: bridge

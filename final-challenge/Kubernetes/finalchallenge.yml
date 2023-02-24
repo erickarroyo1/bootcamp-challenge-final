@@ -1,3 +1,5 @@
+## nodeport es cuando queremos que se exponga, cuando no, usamos cluster-ip
+
 --- # Namespace creation
 
 apiVersion: v1

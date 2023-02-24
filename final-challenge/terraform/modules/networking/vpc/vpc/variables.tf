@@ -1,9 +1,3 @@
-#------------------------------
-# Department:   Ciberseguridad
-# Author:       squintero
-# Module:       network/vpc
-#------------------------------
-
 variable "region" {
   default = "eu-west-1"
 }

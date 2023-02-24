@@ -11,7 +11,7 @@ sudo newgrp docker
 sudo usermod -a -G docker ssm-user
 sudo id ssm-user
 sudo newgrp docker
-sudo systemctl enable docker.service
+sudo systemctl enable docker.service # inicia automáticamente (revisar***)
 sudo systemctl start docker.service
 sudo docker ps
 
