@@ -103,15 +103,16 @@ metadata:
   name: frontend-service
   namespace: bootcamp
 spec:
-  type: NodePort
+  
   #type: ClusterIP
   selector:
     app: frontend-deployment
   ports:
-    - protocol: TCP
-      nodePort: 30010 # Valid range for nodeport is 30000-32767
-      port: 3000
+    - port: 3000
       targetPort: 3000
+      nodePort: 31100 # Valid range for nodeport is 30000-32767
+  type: NodePort
+      
 
 
 --- #service for products 
@@ -121,15 +122,12 @@ metadata:
   name: products-service
   namespace: bootcamp
 spec:
-  type: NodePort
-  #type: ClusterIP
   selector:
     app: products-deployment
   ports:
-    - protocol: TCP
-      nodePort: 30011 # Valid range for nodeport is 30000-32767
-      port: 3001
+    - port: 3001
       targetPort: 3001
+  type: ClusterIP
 
 --- #service for shopping-cart 
 apiVersion: v1
@@ -138,14 +136,10 @@ metadata:
   name: shopping-cart-service
   namespace: bootcamp
 spec:
-  type: NodePort
-  #type: ClusterIP
   selector:
     app: shopping-cart-deployment
   ports:
-    - protocol: TCP
-      nodePort: 30012 # Valid range for nodeport is 30000-32767
-      port: 3002
+    - port: 3002
       targetPort: 3002
-
+  type: ClusterIP
   

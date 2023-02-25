@@ -26,10 +26,6 @@ pip3 install --user docker-compose
 docker-compose version
 
 
-
-
-
-
 #start nginx
 sudo service nginx start
 sudo rm /usr/share/nginx/html/index.html
@@ -42,3 +38,4 @@ curl localhost
 cd ~
 sudo git clone https://github.com/erickarroyo1/bootcamp-challenge-final.git
 cd bootcamp-challenge-final/final-challenge/Docker/
+docker-compose up -d
