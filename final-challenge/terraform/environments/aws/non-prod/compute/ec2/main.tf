@@ -9,9 +9,10 @@ module "ec2" {
   public_subnets_ids     = [data.terraform_remote_state.vpc-tst.outputs.vpc_subnet_public_ids[0]]
   keyname                = var.keyname
   sg                     = [aws_security_group.grupo_seguridad.id]
+  enable_public_ip       = true  #asignar ip publica automáticamente
+
   providers = {
     aws = aws.bootcamp-tst
   }
   depends_on = [aws_key_pair.ssh-key]
 }
-
