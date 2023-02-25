@@ -35,6 +35,11 @@ spec:
       containers:
       - name: frontend
         image: 191006/ms-frontend:1.0
+        env:
+          - name: PRODUCTS_SERVICE
+            value: products-service
+          - name: SHOPPING_CART_SERVICE
+            value: shopping-cart-service
 
 
 --- #Deployment products

@@ -12,36 +12,38 @@ services:
       - "3000:3000"
     image: 191006/ms-frontend:1.0
     #añade entradas al archivo /etc/hosts
-    extra_hosts:
-      - "products:172.25.0.10"
-      - "shopping-cart:172.25.0.20"
+    #extra_hosts:
+    #  - "products:172.25.0.10"
+    #  - "shopping-cart:172.25.0.20"
     # Importante dejar las variables como valores y no como string de datos, es decir entre comillas, sino entrega error 'getaddrinfo ENOTFOUND "172.25.0.10"'
     environment:
       - PRODUCTS_SERVICE=products
       - SHOPPING_CART_SERVICE=shopping-cart
     networks:
-      bootcampfinal:
-        ipv4_address: 172.25.0.5
+      - bootcampfinal
     restart: always
 
+#shopping-cart container
   shopping-cart:
     container_name: shopping-cart  #
     ports:
      - "3001:3001"
     image: 191006/ms-shopping-cart:1.0
     networks:
-      bootcampfinal:
-        ipv4_address: 172.25.0.20
+      - bootcampfinal
     restart: always
+
+# Product Container
   products:
     container_name: products
     ports:
      - "3002:3002"
     image: 191006/ms-products:1.0
     networks:
-      bootcampfinal:
-        ipv4_address: 172.25.0.10
+      - bootcampfinal
     restart: always # sirve para iniciar automáticamente al reiniciar.
+
+#network 
 networks:
   bootcampfinal:
     driver: bridge
