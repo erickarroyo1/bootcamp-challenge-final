@@ -3,13 +3,13 @@ module "ec2" {
   source                 = "../../../../../modules/compute/ec2/instance"
   instance_type          = var.instance_type
   count                  = var.instance_count
-  user_data              = var.user_data
+  user_data              = templatefile("${var.user_data}", {})
   instance_profile_name  = aws_iam_instance_profile.iam-profile.name
   root_block_device_size = var.root_block_device_size
   public_subnets_ids     = [data.terraform_remote_state.vpc-tst.outputs.vpc_subnet_public_ids[0]]
   keyname                = var.keyname
   sg                     = [aws_security_group.grupo_seguridad.id]
-  enable_public_ip       = true  #asignar ip publica automáticamente
+  enable_public_ip       = true #asignar ip publica automáticamente
 
   providers = {
     aws = aws.bootcamp-tst
