@@ -24,8 +24,7 @@ resource "aws_instance" "ec2" {
     volume_size = var.root_block_device_size
     volume_type = var.root_block_device_type
   }
-
- 
+  
   tags = merge(
     {
       Name             = "${var.name}-${terraform.workspace}"
