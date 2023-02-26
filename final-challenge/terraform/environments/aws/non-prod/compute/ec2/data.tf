@@ -12,16 +12,6 @@ data "terraform_remote_state" "vpc" {
   }
 }
 
-data "terraform_remote_state" "eip_server" {
-  backend = "s3"
-  config = {
-    bucket = "tf-remote-state-tlz-bootcamp"
-    #se coloca el env de acuerdo al nombramiento de devops en shared services, no se utiliza la variable env de workspace porque estan nombrados diferentes
-    key     = "env:/${terraform.workspace}/bootcamp/final-challenge/networking/vpc/eip/terraform.tfstate"
-    region  = "us-east-1"
-    profile = "Test-LandindZone"
-  }
-}
 
 data "terraform_remote_state" "ec2_server" {
   backend = "s3"
@@ -29,6 +19,17 @@ data "terraform_remote_state" "ec2_server" {
     bucket = "tf-remote-state-tlz-bootcamp"
     #se coloca el env de acuerdo al nombramiento de devops en shared services, no se utiliza la variable env de workspace porque estan nombrados diferentes
     key     = "env:/${terraform.workspace}/bootcamp/final-challenge/compute/ec2/terraform.tfstate"
+    region  = "us-east-1"
+    profile = "Test-LandindZone"
+  }
+}
+
+data "terraform_remote_state" "iam_instance_profile" {
+  backend = "s3"
+  config = {
+    bucket = "tf-remote-state-tlz-bootcamp"
+    #se coloca el env de acuerdo al nombramiento de devops en shared services, no se utiliza la variable env de workspace porque estan nombrados diferentes
+    key     = "bootcamp/final-challenge/iam/instance_profile/terraform.tfstate"
     region  = "us-east-1"
     profile = "Test-LandindZone"
   }
