@@ -28,8 +28,8 @@ resource "aws_instance" "ec2" {
  
   tags = merge(
     {
-      Name             = "${var.name}-${var.environment}"
-      Environment      = var.environment
+      Name             = "${var.name}-${terraform.workspace}"
+      Environment      = "${terraform.workspace}"
       Terraform        = true
       Comments         = "This resource is managed by Terraform"
     }, var.tags,

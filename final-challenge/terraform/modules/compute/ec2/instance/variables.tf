@@ -16,12 +16,9 @@ variable "public_subnets_ids" {
   type = list(string)
 }
 
-variable "environment" {
-  default = "develop"
-}
 
 variable "name" {
-  default = "ec2 instace"
+  default = "ec2_instace"
 
 }
 
