@@ -1,5 +1,5 @@
 // AWS VPC - PRD
-module "bootcamp-tst-vpc" {
+module "bootcamp-vpc" {
   source                          = "../../../../../modules/networking/vpc/vpc"
   sufix_name                      = var.sufix
   cidr_vpc_main                   = var.cidr_main_vpc
@@ -8,6 +8,6 @@ module "bootcamp-tst-vpc" {
 
   tags = merge(local.common_tags, tomap({ "Environment" = terraform.workspace }))
   providers = {
-    aws = aws.bootcamp-tst
+    aws = aws.bootcamp
   }
 }

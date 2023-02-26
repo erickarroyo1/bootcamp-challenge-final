@@ -1,7 +1,7 @@
 #Extract data from devops deploymnts for networks in other accounts (VPC and Subnnets)
 #para modularizar debe estar esta linea de configuraciín: key     = "env:/${terraform.workspace}/lulox/2-network/2.1-network-environment/terraform.tfstate", en caso que no se tenga, tomará el valor del workspace de networking (sin modularizar)
 
-data "terraform_remote_state" "vpc-tst" {
+data "terraform_remote_state" "vpc" {
   backend = "s3"
   config = {
     bucket = "tf-remote-state-tlz-bootcamp"

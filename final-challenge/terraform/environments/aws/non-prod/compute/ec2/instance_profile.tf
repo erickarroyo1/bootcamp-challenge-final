@@ -3,7 +3,7 @@
 resource "aws_iam_instance_profile" "iam-profile" {
   name     = "ec2_profile"
   role     = aws_iam_role.iam-role.name
-  provider = aws.bootcamp-tst
+  provider = aws.bootcamp
 }
 
 resource "aws_iam_role" "iam-role" {
@@ -22,11 +22,11 @@ EOF
   tags = {
     Environment = "${terraform.workspace}"
   }
-  provider = aws.bootcamp-tst
+  provider = aws.bootcamp
 }
 
 resource "aws_iam_role_policy_attachment" "ssm-policy" {
   role       = aws_iam_role.iam-role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
-  provider   = aws.bootcamp-tst
+  provider   = aws.bootcamp
 }
