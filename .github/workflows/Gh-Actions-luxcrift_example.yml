@@ -17,7 +17,7 @@ jobs:
     environment: EC2
     defaults:
       run:
-        working-directory: /terraform/environments/aws/bootcamp-environments/compute/ec2
+        working-directory: /home/runner/work/bootcamp-challenge-final/bootcamp-challenge-final/terraform/environments/aws/bootcamp-environments/compute/ec2
     steps:
     - uses: actions/checkout@v3
 
