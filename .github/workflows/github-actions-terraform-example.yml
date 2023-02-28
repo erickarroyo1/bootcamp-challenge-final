@@ -1,43 +1,48 @@
-name: Terraform
-
+# Nombre del proyecto
+name: "Terraform"
+#Definimos cuando se ejecuta, en este cado en cada push que se efectúe a master
 on:
   push:
     branches:
-      - main
+      - master
+# trabajando con pull request (investigar un poco más aldetalle)
+  pull_request:
+permissions:
+      id-token: write # This is required for aws oidc connection
+      contents: read # This is required for actions/checkout
+      pull-requests: write # This is required for gh bot to comment PR
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+  TF_LOG: INFO
 
 jobs:
-  terraform:
+  terraform_deploy:
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        shell: bash
+        working-directory: .
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Configure AWS CLI
         run: |
-          aws configure set default.region us-west-2
+          aws configure set default.region us-east-1
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
-          terraform_version: 1.0.0
+          terraform_version: 1.2.8
 
       - name: Install AWS CLI v2
         run: |
           curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
           unzip awscliv2.zip
           sudo ./aws/install
-
-      - name: Configure AWS CLI v2 with OIDC
-        run: |
-          aws configure set sso_region us-west-2
-          aws configure sso --profile sso
-          aws sso login --profile sso
 
       - name: Terraform init
         run: terraform init
