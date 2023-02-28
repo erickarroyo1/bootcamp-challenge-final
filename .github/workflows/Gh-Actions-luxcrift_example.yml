@@ -12,8 +12,8 @@ jobs:
   
   terraform_deploy:
     runs-on: ubuntu-latest
-    name: 🛳 Deploy Terraform EC2
-    if: ${{ github.ref == 'refs/heads/master' }}
+    name: 🛳 Deploy Terraform EC2 into tst environment
+    if: ${{ github.ref == 'refs/heads/tst' }}
     environment: EC2
     defaults:
       run:
@@ -28,13 +28,14 @@ jobs:
 
     - name: Terraform 
       run: |
+        cd bootcamp-challenge-final/final-challenge/terraform/environments/aws/bootcamp-environments/compute/ec2 
         rm -rf .terraform
         terraform init
         terraform validate
-        terraform plan -var-file values.tfvars -out plan.out
+        terraform plan -var-file server_tst.tfvars -out plan.out
         terraform apply "plan.out"
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+        #GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
