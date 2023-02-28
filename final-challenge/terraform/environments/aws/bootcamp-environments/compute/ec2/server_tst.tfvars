@@ -1,5 +1,3 @@
-profile                = "Test-LandindZone"
-region                 = "us-east-1"
 app                    = "server-tf"
 env                    = "test"
 ami_id                 = "ami-0fe472d8a85bc7b0e"
