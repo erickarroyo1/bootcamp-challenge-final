@@ -29,7 +29,7 @@ jobs:
 
     - name: Terraform 
       run: |
-        ls -la 
+        ls -lah 
         cd final-challenge/terraform/environments/aws/bootcamp-environments/compute/ec2
         rm -rf .terraform
         terraform init
