@@ -11,7 +11,7 @@ on:
 jobs:
   
   terraform_deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     name: 🛳 Deploy Terraform EC2 into tst environment
     if: ${{ github.ref == 'refs/heads/tst' }}
     environment: EC2
