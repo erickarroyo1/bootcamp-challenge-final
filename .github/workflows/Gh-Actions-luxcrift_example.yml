@@ -33,9 +33,9 @@ jobs:
         cd final-challenge/terraform/environments/aws/bootcamp-environments/compute/ec2
         ls -lah
         rm -rf .terraform
+        terraform init
         terraform workspace list
         terraform workspace select tst
-        terraform init -reconfigure
         terraform validate
         terraform plan -var-file server_tst.tfvars -out plan.out
         terraform apply "plan.out"
