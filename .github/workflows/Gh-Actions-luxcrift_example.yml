@@ -34,7 +34,7 @@ jobs:
         rm -rf .terraform
         terraform workspace list
         terraform workspace select tst
-        terraform init
+        terraform init -reconfigure
         terraform validate
         terraform plan -var-file server_tst.tfvars -out plan.out
         terraform apply "plan.out"
