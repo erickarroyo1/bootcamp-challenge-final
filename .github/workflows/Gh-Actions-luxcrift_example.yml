@@ -29,7 +29,6 @@ jobs:
     - name: Terraform 
       run: |
         pwd
-        cd bootcamp-challenge-final/final-challenge/terraform/environments/aws/bootcamp-environments/compute/ec2 
         rm -rf .terraform
         terraform init
         terraform validate
