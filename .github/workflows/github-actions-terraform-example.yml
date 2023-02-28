@@ -1,5 +1,5 @@
 # Nombre del proyecto
-name: "Terraform"
+name: "Terraform Deployment v2"
 #Definimos cuando se ejecuta, en este cado en cada push que se efectúe a master
 on:
   push:
