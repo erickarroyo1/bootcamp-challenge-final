@@ -1,6 +1,6 @@
 #!/bin/bash
 # set -x
-BOT_URL="https://api.telegram.org/5728771694:AAG10xSevg3Uz7UsmjOlPrxuQKocypeilgI/sendMessage"
+BOT_URL="https://api.telegram.org/5728771694:x.x.x..x/sendMessage"
                                                 
 TELEGRAM_CHAT_ID="1692690779"
 
