@@ -44,7 +44,6 @@ jobs:
         AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
         ENV: TST
 
-
   terraform_dev_deploy:
     runs-on: ubuntu-18.04
     name: 🛳 Deploy Terraform EC2 into dev environment
@@ -78,7 +77,6 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
         ENV: DEV
-        
 
   terraform_prd_deploy:
     runs-on: ubuntu-18.04
