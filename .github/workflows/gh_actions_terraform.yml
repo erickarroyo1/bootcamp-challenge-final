@@ -1,0 +1,115 @@
+name: Terraform Deployment
+
+on:
+  push:
+    branches:
+      #- master  incluye configuraciones sin ejecución con pipelines
+      - tst
+      - dev
+      - prd
+
+jobs:
+  
+  terraform_tst_deploy:
+    runs-on: ubuntu-18.04
+    name: 🛳 Deploy Terraform EC2 into tst environment
+    if: ${{ github.ref == 'refs/heads/tst' }}
+    environment: TST
+    defaults:
+      run:
+        working-directory: .
+    steps:
+    - name: Download repo
+    - uses: actions/checkout@v3
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 1.2.8
+    - name: Terraform deploy into workspace tst
+      run: |
+        ls -lah 
+        cd final-challenge/terraform/environments/aws/bootcamp-environments/compute/ec2
+        ls -lah
+        rm -rf .terraform
+        terraform init
+        terraform workspace list
+        terraform workspace select tst
+        terraform validate
+        terraform plan -var-file server_tst.tfvars -out plan.out
+        terraform apply "plan.out"
+      env:
+        #GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+        ENV: TST
+
+
+  terraform_dev_deploy:
+    runs-on: ubuntu-18.04
+    name: 🛳 Deploy Terraform EC2 into dev environment
+    if: ${{ github.ref == 'refs/heads/dev' }}
+    environment: DEV
+    defaults:
+      run:
+        working-directory: .
+    steps:
+    - name: Download repo
+    - uses: actions/checkout@v3
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 1.2.8
+    - name: Terraform deploy into workspace dev
+      run: |
+        ls -lah 
+        cd final-challenge/terraform/environments/aws/bootcamp-environments/compute/ec2
+        ls -lah
+        rm -rf .terraform
+        terraform init
+        terraform workspace list
+        terraform workspace select dev
+        terraform validate
+        terraform plan -var-file server_dev.tfvars -out plan.out
+        terraform apply "plan.out"
+      env:
+        #GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+        ENV: DEV
+        
+
+  terraform_prd_deploy:
+    runs-on: ubuntu-18.04
+    name: 🛳 Deploy Terraform EC2 into prd environment
+    if: ${{ github.ref == 'refs/heads/prd' }}
+    environment: PRD
+    defaults:
+      run:
+        working-directory: .
+    steps:
+    - name: Download repo
+    - uses: actions/checkout@v3
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 1.2.8
+    - name: Terraform deploy into workspace prd
+      run: |
+        ls -lah 
+        cd final-challenge/terraform/environments/aws/bootcamp-environments/compute/ec2
+        ls -lah
+        rm -rf .terraform
+        terraform init
+        terraform workspace list
+        terraform workspace select prd
+        terraform validate
+        terraform plan -var-file server_prd.tfvars -out plan.out
+        terraform apply "plan.out"
+      env:
+        #GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+        ENV: PRD
