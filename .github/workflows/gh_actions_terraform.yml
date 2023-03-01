@@ -19,7 +19,6 @@ jobs:
       run:
         working-directory: .
     steps:
-    - name: Download repo
     - uses: actions/checkout@v3
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
@@ -53,7 +52,6 @@ jobs:
       run:
         working-directory: .
     steps:
-    - name: Download repo
     - uses: actions/checkout@v3
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
@@ -87,7 +85,6 @@ jobs:
       run:
         working-directory: .
     steps:
-    - name: Download repo
     - uses: actions/checkout@v3
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
