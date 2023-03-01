@@ -1,4 +1,4 @@
-name: Terraform Deployment
+name: Terraform Bootcamp Deployment
 
 on:
   push:
