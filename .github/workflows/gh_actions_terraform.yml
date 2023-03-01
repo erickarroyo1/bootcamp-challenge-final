@@ -8,6 +8,8 @@ on:
       - dev
       - prd
 
+
+
 jobs:
   
   terraform_tst_deploy:
