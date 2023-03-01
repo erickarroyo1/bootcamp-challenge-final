@@ -152,6 +152,29 @@ https://github.com/roxsross/devops-practice-tools/tree/master/final-bootcampdevo
 
 ### MEJORAS
 
-1. Desplegar 1 vpc por cada ambiente.
+1. Desplegar 1 vpc por cada ambiente."DONE"
+2. Desplegar el terraform en github Actions.
+
+
+# Evidencias de funcionamiento con despliegue y docker funcional:
+
+
+
+#### TST
+   - http://ec2-35-173-130-124.compute-1.amazonaws.com:3000/
+  
+      ![](../docs/Captura%20desde%202023-02-28%2021-37-23.png)
+      ![](../docs/Captura%20desde%202023-02-28%2021-43-29.png)
+#### DEV
+   - http://ec2-54-166-135-90.compute-1.amazonaws.com:3000/
+
+      ![](../docs/Captura%20desde%202023-02-28%2021-37-42.png)
+      ![](../docs/Captura%20desde%202023-02-28%2021-43-33.png)
+#### PRD
+   - http://ec2-52-205-46-141.compute-1.amazonaws.com:3000/
+
+      ![](../docs/Captura%20desde%202023-02-28%2021-37-12.png)
+      ![](../docs/Captura%20desde%202023-02-28%2021-43-38.png)
+
 
 
